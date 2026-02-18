@@ -17,3 +17,5 @@ services:
         sync: false
       - key: CLIENT_URL
         sync: false
+      - key: RENDER_BUILDPACKS
+        value: "https://github.com/heroku/heroku-buildpack-nodejs.git"

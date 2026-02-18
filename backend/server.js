@@ -23,10 +23,13 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// Serve frontend static files
+const distPath = path.join(__dirname, "/frontend/dist");
+app.use(express.static(distPath));
 
+// Fallback route for React Router
 app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+	res.sendFile(path.join(distPath, "index.html"));
 });
 
 server.listen(PORT, () => {
